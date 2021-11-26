@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,10 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c=w=bf*vrhddz&cm+*t^j(sj(t@pn^9#0x!r&@5&3g7jwc5zxr'
+
+SECRET_KEY = 'YOUR PROJECT SECRET KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework_swagger',
+    'corsheaders',
+    'django_logging',
+    'drf_yasg',
+
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,6 +147,16 @@ REST_FRAMEWORK = {
     )
 }
 
+DJANGO_LOGGING = {
+    "CONSOLE_LOG": False,
+    "ELASTICSEARCH_ENABLED": False,
+    "ELASTICSEARCH_HOSTS": ["localhost"],
+}
+
+LOGIN_URL = '/admin/login'
+LOGOUT_URL = '/admin/logout'
+LOGOUT_REDIRECT_URL = '/admin/login'
+
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'basic': {
@@ -151,14 +167,34 @@ SWAGGER_SETTINGS = {
     'LOGOUT_URL': '/admin/logout/'
 }
 
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'basic': {
-            'type': 'basic'
-        }
+
+
+LOGGING = {
+    'version': 1,
+    # Version of logging
+    'disable_existing_loggers': False,
+    # disable logging
+    # Handlers #############################################################
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+        ########################################################################
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
     },
-    'LOGIN_URL': '/admin/login/',
-    'LOGOUT_URL': '/admin/logout/'
+    # Loggers ####################################################################
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG')
+        },
+    },
 }
 
 
