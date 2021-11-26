@@ -82,13 +82,13 @@ WSGI_APPLICATION = 'OCR_python.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'OCR_python',
-        'USER': 'root',
-        'PASSWORD': 'ATL@ML2020',
+        'NAME': 'your database name',
+        'USER': 'user name',
+        'PASSWORD': 'your password!!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'TEST': {
-            'NAME': 'OCR_python_test',
+            'NAME': 'your test database name',
         },
     }
 }
