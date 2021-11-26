@@ -8,3 +8,4 @@ django-logging-json
 django-models-logging
 mysqlclient
 django-rest-swagger
+pytesseract

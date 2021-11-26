@@ -8,6 +8,7 @@ db.mysql
 media/.*
 
 migration/
+api/migrations/
 *__pycache__/
 
 # Backup files #

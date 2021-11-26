@@ -20,8 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
-SECRET_KEY = 'YOUR PROJECT SECRET KEY'
+SECRET_KEY = 'django-insecure-c=w=bf*vrhddz&cm+*t^j(sj(t@pn^9#0x!r&@5&3g7jwc5zxr'
+#SECRET_KEY = 'YOUR PROJECT SECRET KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
 ]
 
-
+#AUTH_USER_MODEL = 'core_user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,13 +82,13 @@ WSGI_APPLICATION = 'OCR_python.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your database name',
-        'USER': 'user name',
-        'PASSWORD': 'your password!!',
+        'NAME': 'OCR_python',
+        'USER': 'root',
+        'PASSWORD': 'ATL@ML2020',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'TEST': {
-            'NAME': 'your test database name',
+            'NAME': 'OCR_python_test',
         },
     }
 }
